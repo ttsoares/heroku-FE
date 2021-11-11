@@ -1,0 +1,10 @@
+body {
+  background: #ccc;
+}
+
+h1 {
+  color: blue;
+  background-color: #3333;
+  text-align: center;
+  padding: 20px;
+}
