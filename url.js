@@ -1,1 +1,1 @@
-const url = "http://localhost:8888"
+const url = "https://thomas-be.herokuapp.com/"
