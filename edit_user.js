@@ -1,5 +1,5 @@
 
-function edit_user() {
+async function edit_user() {
 
   const userID = document.getElementById("userID");
   const uId = userID.value;
@@ -15,19 +15,19 @@ function edit_user() {
   const uEmail = email.value;
 
   let html
+  const dom = document.getElementById('resposta')
 
-  axios.put(`${url}/user/${uId}`, {
+  await axios.put(`${url}/user/${uId}`, {
       name: uName,
       age: uAge,
       email: uEmail
   })
     .then(function (response) {
       html = response
-      document.getElementById('resposta').innerHTML = html.data;
+      dom.innerHTML = html.data;
     })
     .catch(function (error) {
-      html = "<h2> Usuário não encontrado</h2>"
-      document.getElementById('resposta').innerHTML = html;
+      dom.innerHTML = "<h2> Usuário não encontrado</h2>"
     })
 
 

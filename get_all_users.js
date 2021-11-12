@@ -1,13 +1,15 @@
 
-(function get_all_users() {
+(async function get_all_users() {
   let html
-  axios.get(`${url}/users`)
+  await axios.get(`${url}/users`)
     .then(function (response) {
+
       html = response
-  
-      document.getElementById('resposta').innerHTML = html.data
+      const dom = document.getElementById('resposta')
+
+      dom.innerHTML = html.data
     })
     .catch(function (error) {
-      console.log(error);
+      dom.innerHTML = "<h1>Ocorreu algum erro no servidor</h1>"
     })
 })()

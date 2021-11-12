@@ -1,5 +1,5 @@
 
-function del_user_trans() {
+async function del_user_trans() {
 
   const userID = document.getElementById("userID");
   const uID = userID.value;
@@ -8,15 +8,15 @@ function del_user_trans() {
   const tID = transID.value;
 
   let html
+  const dom = document.getElementById('resposta')
 
-  axios.delete(`${url}/user/${uID}/transaction/${tID}`)
+  await axios.delete(`${url}/user/${uID}/transaction/${tID}`)
     .then(function (response) {
       html = response
-      document.getElementById('resposta').innerHTML = html.data;
+      dom.innerHTML = html.data;
     })
     .catch(function (error) {
-      html = "<h2> Usuário ou transação não encontrado</h2>"
-      document.getElementById('resposta').innerHTML = html;
+      dom.innerHTML = "<h2> Usuário ou transação não encontrado</h2>";
     })
 
 

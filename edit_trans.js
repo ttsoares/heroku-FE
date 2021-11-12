@@ -1,5 +1,5 @@
 
-function edit_trans() {
+async function edit_trans() {
 
   const userID = document.getElementById("userID");
   const uId = userID.value;
@@ -17,19 +17,18 @@ function edit_trans() {
   const uType = type.value;
 
   let html
+  const dom = document.getElementById('resposta')
 
-
-  axios.put(`${url}/user/${uId}/transaction/${tID}`, {
+  await axios.put(`${url}/user/${uId}/transaction/${tID}`, {
       title: uTitle,
       value: uValue,
       type: uType
   })
     .then(function (response) {
       html = response
-      document.getElementById('resposta').innerHTML = html.data;
+      dom.innerHTML = html.data;
     })
     .catch(function (error) {
-      html = "<h2> Usuário ou transação não encontrado</h2><br><h2>Ou transação invalida</h2>"
-      document.getElementById('resposta').innerHTML = html;
+      dom.innerHTML = "<h2> Usuário ou transação não encontrado</h2><br><h2>Ou transação invalida</h2>";
     })
 }

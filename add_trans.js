@@ -1,5 +1,5 @@
 
-function add_trans() {
+async function add_trans() {
 
   const userID = document.getElementById("userID");
   const uId = userID.value;
@@ -14,8 +14,9 @@ function add_trans() {
   const uType = type.value;
 
   let html
+  const dom = document.getElementById('resposta')
 
-  axios.post(`${url}/user/${uId}/transactions`, {
+  await axios.post(`${url}/user/${uId}/transactions`, {
       title: uTitle,
       value: uValue,
       type: uType
@@ -23,11 +24,10 @@ function add_trans() {
     .then(function (response) {
       html = response
       console.log(response);
-      document.getElementById('resposta').innerHTML = html.data;
+      dom.innerHTML = html.data;
     })
     .catch(function (error) {
-      html = "<h2> Usuário não encontrado</h2>"
-      document.getElementById('resposta').innerHTML = html;
+      dom.innerHTML = "<h2> Usuário não encontrado</h2>";
     })
 
 

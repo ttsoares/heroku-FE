@@ -1,19 +1,18 @@
 
-function del_user() {
+async function del_user() {
 
   const userID = document.getElementById("userID");
   const uID = userID.value;
 
   let html
+  const dom = document.getElementById('resposta')
 
-  axios.delete(`${url}/user/${uID}`)
+  await axios.delete(`${url}/user/${uID}`)
     .then(function (response) {
       html = response
       document.getElementById('resposta').innerHTML = html.data;
     })
     .catch(function (error) {
-      html = "<h2> Usuário não encontrado</h2>"
-      document.getElementById('resposta').innerHTML = html;
-
+      dom.innerHTML = "<h2> Usuário não encontrado</h2>";
     })
 }

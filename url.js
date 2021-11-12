@@ -1,1 +1,1 @@
-const url = "https://thomas-be.herokuapp.com/"
+const url = "https://thomas-be.herokuapp.com"

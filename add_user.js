@@ -1,5 +1,5 @@
 
-function add_user() {
+async function add_user() {
 
   const name = document.getElementById("name");
   const uName = name.value;
@@ -17,8 +17,9 @@ function add_user() {
   console.log(url)
 
   let html
+  const dom = document.getElementById('resposta')
 
-  axios.post(`${url}/users`, {
+  await axios.post(`${url}/users`, {
       name: uName,
       age: uAge,
       cpf: uCpf,
@@ -26,10 +27,11 @@ function add_user() {
   })
     .then(function (response) {
       html = response
-      document.getElementById('resposta').innerHTML = html.data;
+      dom.innerHTML = html.data;
     })
     .catch(function (error) {
       console.log(error);
+      dom.innerHTML = "<h1>Ocorreu algum erro de comunicação com o servidor</h1>"
     })
 
 
